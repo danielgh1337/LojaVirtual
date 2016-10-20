@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title></title>
+</h:head>
+<h:body>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+		
+			<div class="container">
+				<h4>Cadastro de Cliente</h4>
+				<div class="row form-cadastro">
+					<h:form styleClass="col s12">
+						<div class="row">
+						
+							<div class="input-field col s6">
+								<i class="material-icons prefix">account_circle</i>
+								<h:inputText id="icon_prefix" styleClass="validate"
+									value="#{beanPessoa.pessoa.nome}" />
+								<h:outputLabel value="Nome Completo" for="icon_prefix"
+									styleClass="active" />
+							</div>
+							
+							<div class="input-field col s6">
+								<i class="material-icons prefix">perm_identity</i>
+								<h:inputText id="icon_perm_identify_cpf" class="validate"
+									value="#{beanPessoa.pessoa.cpf}"
+									onkeypress="mascara(this, '###.###.###-##')" maxlength="14" />
+								<h:outputLabel value="CPF" for="icon_perm_identify_cpf"
+									styleClass="active" />
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">perm_identity</i>
+								<h:inputText id="icon_perm_identify_rg" styleClass="validate"
+									value="#{beanPessoa.pessoa.rg}" />
+								<h:outputLabel value="RG" for="icon_perm_identify_rg"
+									styleClass="active" />
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">perm_contact_calendar</i>
+								<h:inputText id="perm_contact_calendar" styleClass="validade"
+									value="#{beanPessoa.pessoa.dataNascimento}"
+									onkeypress="mascara(this, '##/##/####')" maxlength="10">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:inputText>
+								<h:outputLabel value="Data de Nascimento"
+									for="perm_contact_calendar" styleClass="active" />
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">account_circle</i>
+								<h:inputText id="icon_prefix_rua" styleClass="validate"
+									value="#{beanPessoa.pessoa.rua}" />
+								<h:outputLabel value="Rua" for="icon_prefix_rua"
+									styleClass="active" />
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">account_circle</i>
+								<h:inputText id="icon_prefix_bairro" styleClass="validate"
+									value="#{beanPessoa.pessoa.bairro}" />
+								<h:outputLabel value="Bairro" for="icon_prefix_bairro"
+									styleClass="active" />
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">account_circle</i>
+								<h:inputText id="icon_prefix_cidade" styleClass="validate"
+									value="#{beanPessoa.pessoa.cidade}" />
+								<h:outputLabel value="Cidade" for="icon_prefix_cidade"
+									styleClass="active" />
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">account_circle</i>
+								<h:inputText id="icon_prefix_estado" styleClass="validate"
+									value="#{beanPessoa.pessoa.estado}" />
+								<h:outputLabel value="Estado" for="icon_prefix_estado"
+									styleClass="active" />
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">account_circle</i>
+								<h:inputText id="icon_prefix_cep" styleClass="validate"
+									value="#{beanPessoa.pessoa.cep}" />
+								<h:outputLabel value="CEP" for="icon_prefix_cep"
+									styleClass="active" />
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">email</i>
+								<h:inputText id="icon_prefix_email" styleClass="validate"
+									value="#{beanPessoa.pessoa.email}" />
+								<h:outputLabel value="E-Mail" for="icon_prefix_email"
+									styleClass="active" />
+							</div>
+							<div class="input-field col s6">
+								<i class="material-icons prefix">vpn_key</i>
+								<h:inputSecret id="icon_prefix_senha" styleClass="validate"
+									value="#{beanPessoa.pessoa.senha}" />
+								<h:outputLabel value="Senha" for="icon_prefix_senha"
+									styleClass="active" />
+							</div>
+						</div>
+					</h:form>
+				</div>
+				<!-- /row -->
+
+				<!-- PARTE DO TELEFONE -->
+				<div class="container form-cadastro">
+					<h:form class="col s12">
+						<h:dataTable value="#{beanPessoa.pessoa.telefone}" var="telefone" rules="rows">
+							<f:facet name="header">
+								<h:commandLink value="Add fone"
+									styleClass="btn waves-effect waves-light grey darken-1"
+									action="#{beanPessoa.actionInserirTelefone}">
+									<i class="material-icons right">contact_phone</i>
+								</h:commandLink>
+							</f:facet>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Numero" />
+								</f:facet>
+								<h:inputText value="#{telefone.numero}" size="20" maxlength="20"/>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputLabel value="Descrição" />
+								</f:facet>
+								<h:inputText value="#{telefone.descricao}" maxlength="30"/>
+							</h:column>
+							<h:column>
+								<h:commandLink value="Deletar" action="#{beanPessoa.actionDeletarTelefone(telefone)}" />
+							</h:column>
+						</h:dataTable>
+						<h:commandLink value="Gravar"
+							styleClass="btn waves-effect waves-light grey"
+							action="#{beanPessoa.actionSalvar}">
+							<i class="material-icons right">send</i>
+						</h:commandLink>&nbsp;
+							<h:commandLink value="Listar" action="/admin/lista_clientes"
+							styleClass="btn waves-effect waves-light grey lighten-1">
+							<i class="material-icons right">list</i>
+						</h:commandLink>
+					</h:form>
+				</div>
+
+
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition>
+	<nav class="grey darken-3" role="navigation">
+		<div class="nav-wrapper container">
+			<h:form>
+				<h:commandLink action="/publico/index" value="DadTech - Loja Virtual"
+					styleClass="brand-logo right"/>
+				<ul class="left hide-on-med-and-down">
+					<li><h:commandLink value="Home" action="/publico/index"
+							styleClass="active" /></li>
+					<li><h:commandLink value="Cadastrar Produto"
+							action="/admin/form_produto" /></li>
+					<li><h:commandLink value="Listar Produtos"
+							action="/admin/lista_produtos" /></li>
+					<li><h:commandLink value="Cadastrar Pessoas"
+							action="/publico/form_cliente" /></li>
+					<li><h:commandLink value="Lista de Pessoas"
+							action="/admin/lista_clientes" /></li>
+				</ul>
+			</h:form>
+		</div> 
+	</nav>
+</ui:composition>
+</html>

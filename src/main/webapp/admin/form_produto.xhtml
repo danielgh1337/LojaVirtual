@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+			<div class="container">
+				<h4>Cadastrar Produtos</h4>
+				<h:form styleClass="col s6">
+					<div class="row">
+						<div class="input-field col s6">
+							<i class="material-icons prefix">vpn_key</i>
+							<h:inputText id="icon_prefix" styleClass="validate"
+								value="#{beanProduto.produto.id}" disabled="true" />
+							<h:outputLabel value="Codigo" for="icon_prefix"
+								styleClass="active" />
+						</div>
+						<div class="input-field col s6">
+							<i class="material-icons prefix">label</i>
+							<h:inputText id="icon_prefix_nome" styleClass="validate"
+								value="#{beanProduto.produto.nome}" />
+							<h:outputLabel value="Nome" for="icon_prefix_nome"
+								styleClass="active" />
+						</div>
+						<div class="input-field col s6">
+							<i class="material-icons prefix">payment</i>
+							<h:inputText id="icon_prefix_preco" styleClass="validate"
+								value="#{beanProduto.produto.preco}" />
+							<h:outputLabel value="Preço" for="icon_prefix_preco"
+								styleClass="active" />
+						</div>
+					</div>
+					<!-- /row -->
+					<h:commandLink value="Gravar"
+						styleClass="btn waves-effect waves-light grey"
+						action="#{beanProduto.actionSalvar}">
+						<i class="material-icons right">send</i>
+					</h:commandLink>&nbsp;
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
